@@ -1,4 +1,4 @@
-!/bin/bash
+!/usr/bin/env bash
 
 echo 'Starting test...'
 
@@ -28,4 +28,3 @@ done
 #   url="https://${employer}.defaultale.guildacceptance.com/partner?auth_redirect=true"
 #   curl -k -o "${employer}-landing.html" ${url}
 # done
-

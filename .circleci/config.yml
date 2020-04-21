@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: alpine
+    steps:
+      - run: apt-get -qq update; apt-get -y install git
+      - checkout
+      - run:
+          name: Run tests
+          command: |
+            ./pp-default-values-alerting.sh 

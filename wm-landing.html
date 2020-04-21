@@ -1,0 +1,317 @@
+<!DOCTYPE html><html><head>
+<script type="text/javascript">var _rollbarConfig = {"accessToken":"a3cf2397c879469f98b4e9c6f5a01fe4","captureUncaught":true,"payload":{"environment":"acceptance"},"hostWhiteList":["herokuapp.com","guildacceptance.com","guildeducation.com"],"code_version":null,"guessUncaughtFrames":true};</script>
+<script type="text/javascript">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){var n=o(1),t=o(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.8.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){var n=o(2);function t(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var a=0;function l(r,e){this.options=r,this._rollbarOldOnError=null;var o=a++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var i=o(3),d=function(r,e){return new l(r,e)},s=function(r){return new i(d,r)};function c(r){return t(function(){var e=Array.prototype.slice.call(arguments,0),o={shim:this,method:r,args:e,ts:new Date};window._rollbarShims[this.shimId()].messages.push(o)})}l.prototype.loadFull=function(r,e,o,n,a){var l=!1,i=e.createElement("script"),d=e.getElementsByTagName("script")[0],s=d.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=t(function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{s.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,t,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(t=n.args||[],i=0;i<t.length;++i)if("function"==typeof(l=t[i])){l(e);break}}"function"==typeof a&&a(e)}()}}),s.insertBefore(i,d)},l.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),u=0;u<p.length;++u)l.prototype[p[u]]=c(p[u]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var a=new s(e);return t(function(){e.captureUncaught&&(a._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,a,!0),n.wrapGlobals(r,a,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,a,!0);var t=e.autoInstrument;return!1!==e.enabled&&(void 0===t||!0===t||"object"==typeof t&&t.network)&&r.addEventListener&&(r.addEventListener("load",a.captureLoad.bind(a)),r.addEventListener("DOMContentLoaded",a.captureDomContentLoaded.bind(a))),r[o]=a,a})()}},Rollbar:s}},function(r,e){function o(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var n;if("function"==typeof e._rollbarOldOnError)n=e._rollbarOldOnError;else if(r.onerror){for(n=r.onerror;n._rollbarOldOnError;)n=n._rollbarOldOnError;e._rollbarOldOnError=n}e.handleAnonymousErrors();var t=function(){var o=Array.prototype.slice.call(arguments,0);!function(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),e.handleUncaughtException.apply(e,n),o&&o.apply(r,n)}(r,e,n,o)};o&&(t._rollbarOldOnError=n),r.onerror=t}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}},wrapGlobals:function(r,e,n){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&o(e,r[a].prototype,n)}}}},function(r,e){function o(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(o.prototype)}o.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=o},function(r,e){r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /><script src="https://cdn.jsdelivr.net/npm/object-assign-polyfill@0.1.0/index.min.js"></script><script type="application/ld+json">{  "@context": "http://schema.org",  "@type": "WebSite",  "name": "Guild Education",  "alternateName": "Guild",  "url": "https://wm.defaultale.guildacceptance.com/partner"}</script><title>Waste Management - Tuition Debt Free | Guild | Guild Education</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-57x57.png?ixlib=rails-3.0.2&amp;s=01c4dd2add11247506026a83727c7775" sizes="57x57">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-60x60.png?ixlib=rails-3.0.2&amp;s=77f0424a93ee6e9c38cdb9342593e8f5" sizes="60x60">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-72x72.png?ixlib=rails-3.0.2&amp;s=5b4614e66e0b2bf5f8f44bf1cc50c2a4" sizes="72x72">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-76x76.png?ixlib=rails-3.0.2&amp;s=2404715d18320e669fd75bf5791e3e4e" sizes="76x76">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-114x114.png?ixlib=rails-3.0.2&amp;s=6da33d1132a252cb8fcf25d3f3d75798" sizes="114x114">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-120x120.png?ixlib=rails-3.0.2&amp;s=55d1262900a4ec2356289798a653821e" sizes="120x120">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-144x144.png?ixlib=rails-3.0.2&amp;s=5ea103f48775825b72719a0569bbca0c" sizes="144x144">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-152x152.png?ixlib=rails-3.0.2&amp;s=4fb2af263d69ee9a0f79c3806e09cbdd" sizes="152x152">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-180x180.png?ixlib=rails-3.0.2&amp;s=244cd41d785158ed9174a920cfc840a8" sizes="180x180">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/favicon-16x16.png?ixlib=rails-3.0.2&amp;s=bbbb62cbc70f1ec7dc1b653dcd77e4fa" sizes="16x16">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/favicon-32x32.png?ixlib=rails-3.0.2&amp;s=83540334096964b0145cd29a5917e015" sizes="32x32">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/favicon-96x96.png?ixlib=rails-3.0.2&amp;s=9cb43dcdfc0868847ce79a68aeb8061e" sizes="96x96">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/android-chrome-192x192.png?ixlib=rails-3.0.2&amp;s=95a52f093020f6985bd18d417ae735e0" sizes="192x192">
+<meta name="description" content="Go back to school with Five Guys Tuition Assistance Program. Finish your diploma or earn a degree for free.">
+<meta name="keywords" content="five guys, diploma, debt free, education benefits, online learning, working adults, high school degree, college degree">
+<meta property="og:title" content="Waste Management - Tuition Debt Free | Guild Education">
+<meta property="og:description" content="Go back to school with Five Guys Tuition Assistance Program. Finish your diploma or earn a degree for free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wm.defaultale.guildacceptance.com/partner">
+<meta property="og:image" content="//images.ctfassets.net/713fiu2ymvem/3M9DFyCb2VeGyoJ2ZXSTO4/eb33bf4aa379a0730ed8f09f2f9c8824/FG_howtostart_img.png">
+<meta name="twitter:title" content="Waste Management - Tuition Debt Free | Guild Education">
+<meta name="twitter:description" content="Go back to school with Five Guys Tuition Assistance Program. Finish your diploma or earn a degree for free.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="GuildEducation"><meta content="https://imgix.guildeducation.com/Meta/smalltile.png?ixlib=rails-3.0.2&s=89813ba05dab55b2d3cce4221317b990" name="msapplication-square70x70logo" /><meta content="https://imgix.guildeducation.com/Meta/mediumtile.png?ixlib=rails-3.0.2&s=60646db3bc2a4897ca569feeb23a2b67" name="msapplication-square150x150logo" /><meta content="https://imgix.guildeducation.com/Meta/widetile.png?ixlib=rails-3.0.2&s=af542d81d7b613fd9cb61bfbda678491" name="msapplication-wide310x150logo" /><meta content="https://imgix.guildeducation.com/Meta/largetile.png?ixlib=rails-3.0.2&s=53306272a28aa528450db6a20696df3f" name="msapplication-square310x310logo" /><meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="zl35n9IKzRtW9QIPVha6P8cuo8kKhHQPhs3l0arWl/IfsGZZgnYzAQyIdgTqQR+Md1v0RRmQRQt3RsXBYywOzw==" /><link rel="stylesheet" media="all" href="https:/assets/application-8802a718abdab13a89502085d502f0a0925c20751a263a619572a237660eb221.css" /><link rel="stylesheet" media="all" href="https:/packs/css/application-a85b809e.css" /></head><body><div data-react-class="Navigation" data-react-props="{&quot;signUpLink&quot;:&quot;https://students.guildacceptance.com/users/auth/auth0#email/signup/Wm&quot;,&quot;isLoggedIn&quot;:false,&quot;logInLink&quot;:&quot;https://students.guildacceptance.com/users/auth/auth0#email/login/Wm&quot;,&quot;employer&quot;:&quot;wm&quot;,&quot;location&quot;:{&quot;href&quot;:&quot;https://wm.defaultale.guildacceptance.com/partner?auth_redirect=true&quot;,&quot;pathname&quot;:&quot;/partner&quot;},&quot;navItems&quot;:[{&quot;label&quot;:&quot;For Students&quot;,&quot;to&quot;:&quot;https://students.guildacceptance.com/students&quot;,&quot;useAnchor&quot;:true,&quot;testid&quot;:&quot;topNavStudents&quot;},{&quot;label&quot;:&quot;For Companies&quot;,&quot;to&quot;:&quot;https://students.guildacceptance.com/for_companies&quot;,&quot;useAnchor&quot;:true,&quot;testid&quot;:&quot;topNavCompanies&quot;},{&quot;label&quot;:&quot;Explore Programs&quot;,&quot;to&quot;:&quot;https://wm.guildacceptance.com/catalog&quot;,&quot;useAnchor&quot;:true,&quot;testid&quot;:&quot;topNavPrograms&quot;}]}" data-react-cache-id="Navigation-0" remount="true"></div><div class="template1"><div class="wm-cms-page landing_page"><div><p>Checking for hidden characters &zwnj;&zwnj;&zwnj;</p></div><div class="no-space"></div><div><div class="banner accent-bg"><div class="flex flexJustify--center padding--top_16 md:textAlign--center md:padding--top_24"><div class="icon"><div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;Announcement&quot;,&quot;size&quot;:20,&quot;class&quot;:&quot;fontWeight--800&quot;}" data-react-cache-id="Icons-0"></div></div><div class="headline inline-icon"><div class='display--inline'><span class='display--inline'></span> <span class='emphasis display--inline'>Coming Fall 2020:</span> <span class='display--inline'> Education benefits extended to the whole family!</span></div></div></div></div></div><div class="large-space"><a name="hero"></a><div><section class="split flex flex--wrap flexItems--center  image-right width-half hero-module"><figcaption class="width--full flex flexDirection--column flexJustify--center padding--top_24 md:padding--top_0 "><h1>Go back to school - debt free!</h1><p>From high school to master’s degrees and more, tuition is fully covered.</p><div class="margin--top_16 margin--bottom_48 md:margin--y_16"><a class="button trackable" id="HeroSignUp" href="https://wm.guildacceptance.com/users/auth/auth0#email/signup/Waste%20Management">Take the first step</a></div></figcaption><main class="width--full"><img class="hero" src="//images.ctfassets.net/713fiu2ymvem/2YQApykcKK00CMn3fYEm4/743706e9d0ff8fefc28d7e1750a667a8/WM_Hero_Image.png" /></main></section></div></div><div class="large-space"><a name="card_container"></a><section class="outer-header padding--x_16 margin--bottom_36"></section><div class="margin--bottom_40 md:margin--bottom_72"><div class="bg-black-lighten-97 md:padding--y_72 padding--y_24"><div class="card-container inner-header"><h2 class="margin--bottom_8">Go to school on us!</h2><p class="text-gray margin--auto">Select from a wide range of associate, bachelor’s, or master’s degrees, high school completion, college prep courses, professional certificates, and more.</p><div class="flex cards"><div class="info-card multi-card bg-white position--relative textAlign--left icon-spacing"><div class="icon-container"><figure class="icon"><img src="//images.ctfassets.net/713fiu2ymvem/6E0TktmXn7shHuqD4Gzax0/6437b5e34b38232766281e2f46744c98/icons_School_for_less.svg" /></figure></div><div class="card-headline"><div class='display--inline'><span class='display--inline'>Go back to school </span> <span class='emphasis display--inline'>for free</span></div></div><div class="text-gray margin--y_8 md:margin--y_16">Choose from high school, college and master’s degrees, skilled trades programs, and more.</div><div class="cta flexDirection--column display--inlineBlock"><a id="CardContainerCard1" class="link card-cta trackable flex flexItems--center wrap-text" href="https://wm.defaultale.guildacceptance.com/partner/overview"><div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;ChevronRight&quot;,&quot;size&quot;:26,&quot;className&quot;:&quot;flex chevronRightSvg margin--right_16&quot;}" data-react-cache-id="Icons-0"></div></a></div></div><div class="info-card multi-card bg-white position--relative textAlign--left icon-spacing"><div class="icon-container"><figure class="icon"><img src="//images.ctfassets.net/713fiu2ymvem/504UVrM02T5WTWbAlmSTxW/e5ab080a7c9cc15cee790296b30cbde8/icons_working_adults.svg" /></figure></div><div class="card-headline"><div class='display--inline'><span class='display--inline'>Made for </span> <span class='emphasis display--inline'>working adults</span></div></div><div class="text-gray margin--y_8 md:margin--y_16">Discover online, accredited universities with top programs for working adults.</div><div class="cta flexDirection--column display--inlineBlock"><a id="CardContainerCard2" class="link card-cta trackable flex flexItems--center wrap-text" href="https://wm.defaultale.guildacceptance.com/partner/overview#split_section_with_header1">Explore programs<div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;ChevronRight&quot;,&quot;size&quot;:26,&quot;className&quot;:&quot;flex chevronRightSvg margin--right_16&quot;}" data-react-cache-id="Icons-0"></div></a></div></div><div class="info-card multi-card bg-white position--relative textAlign--left icon-spacing"><div class="icon-container"><figure class="icon"><img src="//images.ctfassets.net/713fiu2ymvem/Mgn7ONCuhymHpnyvG6chu/beba0b133ddd6c1263d553f9da70b3d3/icons_support.svg" /></figure></div><div class="card-headline"><div class='display--inline'><span class='display--inline'></span> <span class='emphasis display--inline'>Support</span> <span class='display--inline'> at every step</span></div></div><div class="text-gray margin--y_8 md:margin--y_16">You’ll get personalized coaching support from day one all the way through to graduation.</div><div class="cta flexDirection--column display--inlineBlock"><a id="CardContainerCard3" class="link card-cta trackable flex flexItems--center wrap-text" href="https://wm.defaultale.guildacceptance.com/partner/overview#split_section_with_header2">Learn about coaching<div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;ChevronRight&quot;,&quot;size&quot;:26,&quot;className&quot;:&quot;flex chevronRightSvg margin--right_16&quot;}" data-react-cache-id="Icons-0"></div></a></div></div></div></div></div></div></div><div class="large-space"><a name="split_section"></a><div><section class="split flex flex--wrap flexItems--center reverse image-left width-half"><figcaption class="width--full flex flexDirection--column flexJustify--center padding--top_24 md:padding--top_0 equal-split"><div class="textAlign--left"><div class="list-content"><h2 class="padding--top_8 md:padding--top_0">How to get started</h2><div class="subheader"><p>Whether you know exactly what you are looking for or need a little help, we’ve got your back.</p></div><aside><div class="flex padding--y_8 text-black-base"><div class="number flexDirection--column"><b class="fontWeight--900 black-text">#1</b></div><div class="text-black-base position--relative padding--left_8">Sign up for an account</div></div><div class="flex padding--y_8 text-black-base"><div class="number flexDirection--column"><b class="fontWeight--900 black-text">#2</b></div><div class="text-black-base position--relative padding--left_8"> Find and apply to a program that fits your needs</div></div><div class="flex padding--y_8 text-black-base"><div class="number flexDirection--column"><b class="fontWeight--900 black-text">#3</b></div><div class="text-black-base position--relative padding--left_8">Go back to school</div></div><div class="margin--top_32 md:margin--top_40"><a class="button trackable" id="SplitSectionCta" href="https://wm.guildacceptance.com/users/auth/auth0#email/signup/Waste%20Management">Get Started</a></div></aside></div></div></figcaption><main class="width--full"><img class="small dropshadow" src="//images.ctfassets.net/713fiu2ymvem/DQ0kIKoGBKNxBDycLMrR2/968722e3b41c9ea7110e085e5b188323/WM_getstarted_img.jpg" /></main></section></div></div><div class="large-space"><a name="flex"></a><div><section class="split flex flex--wrap flexItems--center  image-right width-half"><figcaption class="width--full flex flexDirection--column flexJustify--center padding--top_24 md:padding--top_0 equal-split"><div class="textAlign--left"><div class="list-content"><h2 class="padding--top_8 md:padding--top_0">Education benefits for your family</h2><div class="subheader"><p>Coming fall 2020, your education benefit will be extended to your dependents. Covered dependents are:</p></div><aside><div class="flex padding--y_8 text-black-base"><div class="flexDirection--column"><div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;Bullet&quot;,&quot;size&quot;:24,&quot;className&quot;:null}" data-react-cache-id="Icons-0"></div></div><div class="text-black-base position--relative padding--left_8">Your Spouse</div></div><div class="flex padding--y_8 text-black-base"><div class="flexDirection--column"><div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;Bullet&quot;,&quot;size&quot;:24,&quot;className&quot;:null}" data-react-cache-id="Icons-0"></div></div><div class="text-black-base position--relative padding--left_8">Your children, ages 18-26</div></div><div class="flex padding--y_8 text-black-base"><div class="flexDirection--column"><div data-react-class="Icons" data-react-props="{&quot;name&quot;:&quot;Bullet&quot;,&quot;size&quot;:24,&quot;className&quot;:null}" data-react-cache-id="Icons-0"></div></div><div class="text-black-base position--relative padding--left_8">Please note, eligible dependents must be listed within your HRIS. Please follow up with your HR partner at WM with any additional questions</div></div></aside></div></div></figcaption><main class="width--full"><img class="medium dropshadow" src="//images.ctfassets.net/713fiu2ymvem/w9EyYIVsJ4YiHNj6jRWqf/9edfdb9d20bfa0303f10e1f15521d22d/WM_dependents.jpg" /></main></section></div></div><div class="large-space"><a name="testimonial"></a><div class="md:padding--x_80"><section class="split flex flex--wrap flexItems--center testimonial image-right width-thirds"><figcaption class="width--full flex flexDirection--column flexJustify--center padding--top_24 md:padding--top_0 equal-split"><a name="testimonial"></a><h2>Hear from other students</h2><aside class="fontWeight--400"><img class="open-quote" src="//images.ctfassets.net/713fiu2ymvem/HDRqlCVrVsTUdMQX269cc/b90d33235ee761b6ed546f8e822865cb/WM1_icon_quotesvg.svg" /><p>I am grateful for my support systems, whether that is Guild, or my family, or even my college advisors. I feel like I have a dozen people cheering me on no matter how hectic things become.</p><p>I am not just a profile on an advisor's desk. I feel like someone that matters and that needs to achieve goals.</p><p class="text-gray byline">-Phillip H., Brandman University<img class="close-quote" src="//images.ctfassets.net/713fiu2ymvem/HDRqlCVrVsTUdMQX269cc/b90d33235ee761b6ed546f8e822865cb/WM1_icon_quotesvg.svg" /></p></aside></figcaption><main class="width--full"><img class="small" src="//images.ctfassets.net/713fiu2ymvem/3zpdGlPQS1dm7JQgd9bDVg/bc36967ec1b2ba28ad487b12798d17a6/WM_splashquote_img.png" /></main></section></div></div><div><div class="sticky-footer textAlign--center flex"><div class="contents"><span class="heading">The path to a new career starts here</span><a class="button trackable" id="stickyFooterSignUpCTA" href="https://students.guildacceptance.com/users/auth/auth0#email/signup/Wm">Take the first step</a><a class="link login trackable" id="stickyFooterLoginCTA" href="https://students.guildacceptance.com/users/auth/auth0#email/login/Wm">Login</a></div></div></div></div></div><footer><script type="application/ld+json">{  "@context": "http://schema.org",  "@type": "Organization",  "name": "Guild Education",  "legalName": "Guild Education, Inc",  "url": "https://wm.defaultale.guildacceptance.com/partner",  "logo": "https://imgix.guildeducation.com/Meta/guild-logo-opengraph.png?ixlib=rails-3.0.2&s=93e135b03d29eeab53107bec168a6f92",  "address": [    {      "@type": "PostalAddress",      "streetAddress": "370 17th St., Suite 3600",      "postalCode": "80202",      "addressRegion": "CO",      "addressLocality": "Denver",      "addressCountry": "USA"    }  ],  "contactPoint": [    {      "@type": "ContactPoint",      "email": "info@guildeducation.com",      "telephone": "+1-720-709-2871",      "contactType": "customer service"    }  ],  "sameAs": [    "https://twitter.com/guildeducation",    "https://www.linkedin.com/company/guild-education'",    "https://www.facebook.com/GuildEducation"  ]}</script><div class="footer__wrapper"><div data-react-class="Footer" data-react-props="{&quot;logo&quot;:&quot;https://recess-images.guildeducation.com/guild_logos/g/g_color.svg&quot;,&quot;columns&quot;:[{&quot;title&quot;:&quot;Contact Us&quot;,&quot;links&quot;:[{&quot;href&quot;:&quot;https://guildeducation.zendesk.com/hc/en-us&quot;,&quot;label&quot;:&quot;Help Center&quot;,&quot;id&quot;:&quot;help-center&quot;},{&quot;href&quot;:&quot;https://guildeducation.zendesk.com/hc/en-us/requests/new&quot;,&quot;label&quot;:&quot;Contact a Coach&quot;,&quot;id&quot;:&quot;contact-a-coach&quot;}]},{&quot;title&quot;:&quot;Product&quot;,&quot;links&quot;:[{&quot;href&quot;:&quot;https://students.guildeducation.com/students&quot;,&quot;label&quot;:&quot;Students&quot;},{&quot;href&quot;:&quot;https://students.guildeducation.com/for_companies&quot;,&quot;label&quot;:&quot;Companies&quot;},{&quot;href&quot;:&quot;https://wm.guildacceptance.com/catalog&quot;,&quot;label&quot;:&quot;Programs&quot;}]},{&quot;title&quot;:&quot;Guild&quot;,&quot;links&quot;:[{&quot;href&quot;:&quot;https://www.guildeducation.com/careers&quot;,&quot;label&quot;:&quot;Careers&quot;},{&quot;href&quot;:&quot;https://students.guildeducation.com/press&quot;,&quot;label&quot;:&quot;Press&quot;},{&quot;href&quot;:&quot;https://students.guildeducation.com/about_us&quot;,&quot;label&quot;:&quot;Our Story&quot;}]}],&quot;socialLinks&quot;:null,&quot;noBackground&quot;:null,&quot;partnerCopyrightName&quot;:null,&quot;customClass&quot;:null}" data-react-cache-id="Footer-0"></div></div></footer><script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script><script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0/dist/fetch.umd.min.js"></script><script src="https://player.vimeo.com/api/player.js"></script><script>var scriptURL = "https://students.guildacceptance.com/ghost"
+loadAnalyticsScript();
+loadScrollDepthTracking();
+
+function loadAnalyticsScript() {
+  new Promise(function(resolve, reject) {
+    var scriptElement = document.createElement('script');
+    scriptElement.type = 'text/javascript';
+    scriptElement.src = scriptURL;
+    document.head.appendChild(scriptElement);
+    scriptElement.onload = function() {
+      resolve();
+    };
+  }).then(function() {
+    document.addEventListener('analyticsLoaded', function() {
+      startAnalytics(setEffectiveReferrer());
+    });
+  }).then(function() {
+    document.addEventListener('analyticsLoaded', function() {
+      loadNavClickTracking();
+      loadPageClickTracking();
+      loadAnalyticsAndVimeo()
+    });
+  });
+};
+function startAnalytics(referrer) {
+  analytics.page({
+    loggedIn: false,
+    referrer: referrer
+  });
+  analytics.track('PageTrack', {
+    loggedIn: false
+  });
+  analytics.ready(function() {
+    ga('set', 'transport', 'beacon');
+  });
+}
+function setEffectiveReferrer() {
+  var state = window['optimizely'] && window['optimizely'].get('state');
+  var referrer = state && state.getRedirectInfo() ? state.getRedirectInfo().referrer : document.referrer;
+  return referrer;
+}
+
+function toCamelCase(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    return index == 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+|-/g,'');
+}
+
+function loadAnalyticsAndVimeo(){
+  if(typeof analytics !== "undefined" && typeof analytics.plugins !== "undefined"){
+    var iframe = document.querySelector('#videoPlayButton');
+    if (iframe) {
+      var player = new Vimeo.Player(iframe);
+      var VimeoAnalytics = analytics.plugins.VimeoAnalytics
+      var vimeoAnalytics = new VimeoAnalytics(player, "292435cf55db28b3f508ace5ade0816a")
+      vimeoAnalytics.initialize() 
+    }
+  }
+  else{
+    setTimeout(loadAnalyticsAndVimeo, 500);
+  }
+}
+function product() {
+  var path = window.location.pathname;
+  if(path.indexOf('manager_toolkit') != -1) {
+    return 'managerToolkit';
+  } else {
+    return 'partnerPages';
+  };
+}
+
+function loadNavClickTracking() {    
+  const selectors = {
+    '[data-testid=_login-button]': 'topNavLogin',
+    '[data-testid=signup-button]': 'topNavSignUp',
+    '[testid=topNavStudents]': 'topNavStudents',
+    '[testid=topNavCompanies]': 'topNavCompanies',
+    '[testid=topNavPrograms]': 'topNavPrograms',
+    '[testid=topNavHome]': 'topNavHome',
+    '[testid=topNavApplications]': 'topNavApplications',
+    '[testid=topNavTuitionToolkit]': 'topNavTuitionToolkit'
+  }
+  for (var selectorName in selectors) {
+    var elems = document.querySelectorAll(selectorName);
+    Array.prototype.forEach.call(elems, function(element) {
+      var currentSelector = selectorName; // because IE 11 does not support function-scoped `let` in loop
+      element && element.addEventListener('click', function(e) {
+        analytics.track('Clickable', {
+          "type": element.className.split(' ')[0].split('--')[0],
+          "text": element.innerText,
+          "tag": selectors[currentSelector],
+          "loggedIn": false,
+          "product": product()
+        })
+        e.stopPropagation();
+      })
+    })
+  }
+}
+
+function loadPageClickTracking() {
+  const classes = [
+      'topGetStarted',
+      'leaderLogin',
+      'newBannerCTA',
+    ]
+  classes.forEach(function(className) {
+    var elems1 = document.getElementsByClassName(className);
+    Array.prototype.forEach.call(elems1, function(element) {
+      element && element.addEventListener('click', function(e) {
+        analytics.track('Clickable', {
+          "type": "button",
+          "tag": toCamelCase(className),
+          "text": element.innerHTML,
+          "loggedIn": false,
+          "product": product()
+        })
+        e.stopPropagation();
+      })
+    })
+  })
+
+  // CATALOG STYLE PROGRAM TILES
+  var elems = document.getElementsByClassName('programTile');
+  Array.prototype.forEach.call(elems, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+        "type": "tile",
+        "tag": toCamelCase(element.id + "Tile"),
+        "text": toCamelCase(element.id),
+        "loggedIn": false,
+        "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+  // OLD RECOMMENDED PROGRAMS LAYOUT
+  // Present on Discover, Canvas, HHUSA, Lyft, Mission43, PSL, SEIU & Taco Bell. Remove when this layout is deprecated
+  var elems2 = document.getElementsByClassName('featuredProgram');
+  Array.prototype.forEach.call(elems2, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+        "type": "link",
+        "tag": toCamelCase(element.id),
+        "text": element.innerHTML,
+        "loggedIn": false,
+        "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+
+  // The trackable class is present on all new (Jan 2020) template CTAs.
+  // Separating so it will be easy to deprecate older tracking events
+  var trackables = document.getElementsByClassName('trackable');
+  Array.prototype.forEach.call(trackables, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+       "type": element.className.split(' ')[0],
+       "tag": element.id,
+       "text": element.innerHTML.split('<')[0],
+       "loggedIn": false, 
+       "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+  // FOOTER
+  // Can't assign ids to footer items, so have to use the recess classes
+  var elems3 = document.getElementsByClassName('nav-item--2pik_');
+  Array.prototype.forEach.call(elems3, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+        "type": "link",
+        "tag": toCamelCase("footer" + element.innerHTML),
+        "text": element.innerHTML,
+        "loggedIn": false,
+        "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+}
+
+ // SCROLL DEPTH
+function loadScrollDepthTracking() {
+  let pageSection;
+  let totalSections;
+  window.addEventListener("load", (event) => {
+    createObservers();
+  }, false);
+  function createObservers() {
+    pageSections = document.querySelectorAll(".scrollSection");
+    totalSections = pageSections.length + 1 // Adds 1 for hero section
+    let observer;
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.8]
+    };
+    pageSections.forEach((section) => {
+      let arr = Array.prototype.slice.call(pageSections); // Converts to array to find section's index
+      index = arr.indexOf(section) + 2; // Adds 1 to not start counting at 0, and 1 to accommodate for hero section
+      section.setAttribute('data-section', `${index}-of-${totalSections}`)
+      observer = new IntersectionObserver(handleIntersect, options);
+      observer.observe(section);
+    })
+  }
+  function handleIntersect(entries, observer) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        analytics && analytics.track('Scroll', {
+          "location": entry.target.getAttribute('data-section'),
+          "tag": entry.target.id,
+          "screenWidth": window.innerWidth,
+          "loggedIn": true,
+          "product": product()
+        })
+        observer.unobserve(entry.target);
+      }
+    });
+  }
+}</script><script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=17fa3723-ed72-4e15-8f0f-3539ee3e92b9"></script><script>// Grab a particular cookie & format it
+function getCookie(name) {
+  function escape(s) { return s.replace(/([.*+?\^${}()|\[\]\/\\])/g, '\\$1'); };
+  var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+  var result = match ? match[1] : null;
+  var cookie = !!result && result[0] == "%" ? result.substring(3, result.length-3) : null
+  return cookie
+};
+// Set the ajs_anonymous_id cookie in Zendesk tags
+const uuid = ""
+const uuidTag = "user_id-"+uuid
+const anonId = getCookie('ajs_anonymous_id')
+const anonIdTag = "anon_id-"+anonId
+const tags = []
+if (!!uuid) { tags.push(uuidTag) }
+if (!!anonId) { tags.push(anonIdTag) }
+window.zESettings = {
+  webWidget: {
+    chat: {
+      tags: tags
+    }
+  }
+};
+// Load Zendesk widget
+zE('webWidget:on', 'chat:departmentStatus', function(dept) {
+  if (dept.name == 'General Chat Support' && dept.status == 'online') {
+    zE('webWidget', 'updateSettings', {
+      webWidget: {
+        chat: {
+          departments: {
+            enabled: [''],
+            select: 'General Chat Support'
+          },
+          suppress: false
+        }
+      }
+    });
+  } else if (dept.name == 'General Chat Support' && dept.status !== 'online') {
+    zE('webWidget', 'updateSettings', {
+      webWidget: {
+        chat: {
+          suppress: true
+        }
+      }
+    });
+  }
+});
+// Log analytics event when chat window is opened
+zE('webWidget:on', 'open', function() {
+  var path = window.location.pathname;
+  var product;
+  if(path.indexOf('manager_toolkit') != -1) {
+    product = 'managerToolkit';
+  } else {
+    product = 'partnerPages';
+  };
+  window.analytics && window.analytics.track("Clickable", 
+    {
+      "type": "Button", 
+      "text": "Chat/Help", 
+      "tag":"floating_chat", 
+      "loggedIn": false,
+      "product": product
+    }
+  );
+});</script><script src="https:/packs/js/application-4a6ab4066fe7ffb5814c.js"></script></body></html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html><html><head>
+<script type="text/javascript">var _rollbarConfig = {"accessToken":"a3cf2397c879469f98b4e9c6f5a01fe4","captureUncaught":true,"payload":{"environment":"acceptance"},"hostWhiteList":["herokuapp.com","guildacceptance.com","guildeducation.com"],"code_version":null,"guessUncaughtFrames":true};</script>
+<script type="text/javascript">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){var n=o(1),t=o(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.8.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){var n=o(2);function t(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var a=0;function l(r,e){this.options=r,this._rollbarOldOnError=null;var o=a++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var i=o(3),d=function(r,e){return new l(r,e)},s=function(r){return new i(d,r)};function c(r){return t(function(){var e=Array.prototype.slice.call(arguments,0),o={shim:this,method:r,args:e,ts:new Date};window._rollbarShims[this.shimId()].messages.push(o)})}l.prototype.loadFull=function(r,e,o,n,a){var l=!1,i=e.createElement("script"),d=e.getElementsByTagName("script")[0],s=d.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=t(function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{s.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,t,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(t=n.args||[],i=0;i<t.length;++i)if("function"==typeof(l=t[i])){l(e);break}}"function"==typeof a&&a(e)}()}}),s.insertBefore(i,d)},l.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),u=0;u<p.length;++u)l.prototype[p[u]]=c(p[u]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var a=new s(e);return t(function(){e.captureUncaught&&(a._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,a,!0),n.wrapGlobals(r,a,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,a,!0);var t=e.autoInstrument;return!1!==e.enabled&&(void 0===t||!0===t||"object"==typeof t&&t.network)&&r.addEventListener&&(r.addEventListener("load",a.captureLoad.bind(a)),r.addEventListener("DOMContentLoaded",a.captureDomContentLoaded.bind(a))),r[o]=a,a})()}},Rollbar:s}},function(r,e){function o(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var n;if("function"==typeof e._rollbarOldOnError)n=e._rollbarOldOnError;else if(r.onerror){for(n=r.onerror;n._rollbarOldOnError;)n=n._rollbarOldOnError;e._rollbarOldOnError=n}e.handleAnonymousErrors();var t=function(){var o=Array.prototype.slice.call(arguments,0);!function(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),e.handleUncaughtException.apply(e,n),o&&o.apply(r,n)}(r,e,n,o)};o&&(t._rollbarOldOnError=n),r.onerror=t}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}},wrapGlobals:function(r,e,n){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&o(e,r[a].prototype,n)}}}},function(r,e){function o(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(o.prototype)}o.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=o},function(r,e){r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /><script src="https://cdn.jsdelivr.net/npm/object-assign-polyfill@0.1.0/index.min.js"></script><script type="application/ld+json">{  "@context": "http://schema.org",  "@type": "WebSite",  "name": "Guild Education",  "alternateName": "Guild",  "url": "https://walmart.defaultale.guildacceptance.com/partner"}</script><title>Walmart Live Better U - $1 a Day | Guild Education | Guild Education</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-57x57.png?ixlib=rails-3.0.2&amp;s=01c4dd2add11247506026a83727c7775" sizes="57x57">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-60x60.png?ixlib=rails-3.0.2&amp;s=77f0424a93ee6e9c38cdb9342593e8f5" sizes="60x60">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-72x72.png?ixlib=rails-3.0.2&amp;s=5b4614e66e0b2bf5f8f44bf1cc50c2a4" sizes="72x72">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-76x76.png?ixlib=rails-3.0.2&amp;s=2404715d18320e669fd75bf5791e3e4e" sizes="76x76">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-114x114.png?ixlib=rails-3.0.2&amp;s=6da33d1132a252cb8fcf25d3f3d75798" sizes="114x114">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-120x120.png?ixlib=rails-3.0.2&amp;s=55d1262900a4ec2356289798a653821e" sizes="120x120">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-144x144.png?ixlib=rails-3.0.2&amp;s=5ea103f48775825b72719a0569bbca0c" sizes="144x144">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-152x152.png?ixlib=rails-3.0.2&amp;s=4fb2af263d69ee9a0f79c3806e09cbdd" sizes="152x152">
+<link rel="apple-touch-icon" type="image/x-icon" href="https://imgix.guildeducation.com/Meta/apple-touch-icon-180x180.png?ixlib=rails-3.0.2&amp;s=244cd41d785158ed9174a920cfc840a8" sizes="180x180">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/favicon-16x16.png?ixlib=rails-3.0.2&amp;s=bbbb62cbc70f1ec7dc1b653dcd77e4fa" sizes="16x16">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/favicon-32x32.png?ixlib=rails-3.0.2&amp;s=83540334096964b0145cd29a5917e015" sizes="32x32">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/favicon-96x96.png?ixlib=rails-3.0.2&amp;s=9cb43dcdfc0868847ce79a68aeb8061e" sizes="96x96">
+<link rel="icon" type="image/png" href="https://imgix.guildeducation.com/Meta/android-chrome-192x192.png?ixlib=rails-3.0.2&amp;s=95a52f093020f6985bd18d417ae735e0" sizes="192x192">
+<meta name="description" content="Walmart&#39;s Live Better U education benefit offers college degrees and programs for just $1 a day.">
+<meta name="keywords" content="walmart, tuition reimbursement, tuition assistance, education benefits, online learning, online college, online high school, management training">
+<meta property="og:title" content="Walmart Live Better U - $1 a Day | Guild Education">
+<meta property="og:description" content="Walmart&amp;#39;s Live Better U education benefit offers college degrees and programs for just $1 a day.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://walmart.defaultale.guildacceptance.com/partner">
+<meta property="og:image" content="https://imgix.guildeducation.com/partner-pages/walmart/og_image.jpg">
+<meta name="twitter:title" content="Walmart Live Better U - $1 a Day | Guild Education">
+<meta name="twitter:description" content="Walmart&amp;#39;s Live Better U education benefit offers college degrees and programs for just $1 a day.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="GuildEducation"><meta content="https://imgix.guildeducation.com/Meta/smalltile.png?ixlib=rails-3.0.2&s=89813ba05dab55b2d3cce4221317b990" name="msapplication-square70x70logo" /><meta content="https://imgix.guildeducation.com/Meta/mediumtile.png?ixlib=rails-3.0.2&s=60646db3bc2a4897ca569feeb23a2b67" name="msapplication-square150x150logo" /><meta content="https://imgix.guildeducation.com/Meta/widetile.png?ixlib=rails-3.0.2&s=af542d81d7b613fd9cb61bfbda678491" name="msapplication-wide310x150logo" /><meta content="https://imgix.guildeducation.com/Meta/largetile.png?ixlib=rails-3.0.2&s=53306272a28aa528450db6a20696df3f" name="msapplication-square310x310logo" /><meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="c9tGMneEowQZIsTbyoTRM/8zzzRMrffu2bbP/Hk4//TC+5Cq1S146ZmFOM7Esf8LF/w2k2sZaEPd1FCV3IzPXA==" /><link rel="stylesheet" media="all" href="https:/assets/application-8802a718abdab13a89502085d502f0a0925c20751a263a619572a237660eb221.css" /><link rel="stylesheet" media="all" href="https:/packs/css/application-a85b809e.css" /></head><body><div data-react-class="Navigation" data-react-props="{&quot;signUpLink&quot;:&quot;https://students.guildacceptance.com/users/auth/auth0#Walmart_redirect&quot;,&quot;isLoggedIn&quot;:false,&quot;logInLink&quot;:&quot;https://students.guildacceptance.com/users/auth/auth0#email/login/Walmart&quot;,&quot;employer&quot;:&quot;walmart&quot;,&quot;location&quot;:{&quot;href&quot;:&quot;https://walmart.defaultale.guildacceptance.com/partner?auth_redirect=true&quot;,&quot;pathname&quot;:&quot;/partner&quot;},&quot;navItems&quot;:[{&quot;label&quot;:&quot;For Students&quot;,&quot;to&quot;:&quot;https://students.guildacceptance.com/students&quot;,&quot;useAnchor&quot;:true,&quot;testid&quot;:&quot;topNavStudents&quot;},{&quot;label&quot;:&quot;For Companies&quot;,&quot;to&quot;:&quot;https://students.guildacceptance.com/for_companies&quot;,&quot;useAnchor&quot;:true,&quot;testid&quot;:&quot;topNavCompanies&quot;},{&quot;label&quot;:&quot;Explore Programs&quot;,&quot;to&quot;:&quot;https://walmart.guildacceptance.com/catalog&quot;,&quot;useAnchor&quot;:true,&quot;testid&quot;:&quot;topNavPrograms&quot;}]}" data-react-cache-id="Navigation-0" remount="true"></div><div class="walmart-page"><div class="desktop-nav walmart-base-bg"><a class="link trackable active" id="subnavOverview" href="/partner">Overview</a><a class="link trackable" id="subnavCollege" href="/partner/college">College</a><a class="link trackable" id="subnavCertificates" href="/partner/certificates">Certificates</a><a class="link trackable" id="subnavHighSchool" href="/partner/high_school">High School</a><a class="link trackable" id="subnavLanguage" href="/partner/language">Language</a></div><div class="dropdown-menu"><div class="visible-option-wrapper toggle-menu"><div class="single-option walmart-base-bg active"><div><div class="uppercase display--block">Overview</div><div class="uppercase display--none">College</div><div class="uppercase display--none">Certificates</div><div class="uppercase display--none">High School</div><div class="uppercase display--none">Language</div></div><img class="toggle-menu" sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/down_arrow.svg?ixlib=rails-3.0.2&s=b9af6e4d9ec4347aa804277baf11cbb0" /></div></div><div class="dropdown-menu"><div class="other-options-wrapper"><div class="single-option walmart-base-bg"><a id="subnavOverview" class="link trackable" href="/partner">Overview</a><img class="close-menu" sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/up_arrow.svg?ixlib=rails-3.0.2&s=75790af4c5b02152a2ed6cefc07635e6" /></div><div class="single-option walmart-base-bg"><a class="link trackable" id="subnavCollege" href="/partner/college">College</a></div><div class="single-option walmart-base-bg"><a class="link trackable" id="subnavCertificates" href="/partner/certificates">Certificates</a></div><div class="single-option walmart-base-bg"><a class="link trackable" id="subnavHighSchool" href="/partner/high_school">High School</a></div><div class="single-option walmart-base-bg"><a class="link trackable" id="subnavLanguage" href="/partner/language">Language</a></div></div></div></div><div class="section walmart-light-bg"><div class="section split flex"><div class="section image flex--1 flex flexJustify--start overview-header-image"><div class="logo margin--left_32 flexSelf--end"><img srcset="https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=100&amp;s=c84004d3ad6c474c63fa9c4c0ee60398 100w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=116&amp;s=15968689635632907b427d3b54ddb372 116w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=134&amp;s=7d8e36f634d4ec7b06c0f8c614e94d21 134w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=156&amp;s=e446d6cca2033232e5e34761afb03f8a 156w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=182&amp;s=294a62759fe629edb8bfce0473e29aa2 182w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=210&amp;s=333df41c51f9ef5765cd164e179db120 210w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=244&amp;s=a837490084bd4b64396c8bdd7c387551 244w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=282&amp;s=13b7edeb6ee0b0a789ac522ada1b9ca2 282w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=328&amp;s=a8270419fb970d5b39ec77bf7e6df812 328w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=380&amp;s=7f12b2d8dc40cbb3c352998187b5692f 380w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=442&amp;s=46b9c1ef8dcae72388b8239cddfd516f 442w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=512&amp;s=956f42366c7e1ac10c121fbbd81fd60c 512w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=594&amp;s=7da9409b7177582118d10eb2be261d31 594w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=688&amp;s=a9e34d92ee4390750c8ff608853c4872 688w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=798&amp;s=2b5c23c0419ca14ec623b9986e45c224 798w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=926&amp;s=8400bdde9c941ab40ea89ad0806fbd42 926w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=1074&amp;s=a0a5a988fee4668f900be20108620bd5 1074w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=1246&amp;s=49d353dd9dc358786991f8ef75c766e5 1246w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=1446&amp;s=773e7957f16dde69af562d8c3e0ce77f 1446w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=1678&amp;s=e697140f715ea5e1a2af8b8b561fac07 1678w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=1946&amp;s=ee72ba0bdf753df7f99c13836e25d892 1946w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=2258&amp;s=0ac48620895329073a9f2127cdd699c9 2258w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=2618&amp;s=551a232ad8a9eb703454ae85d725f030 2618w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=3038&amp;s=155194914a72489f225400c7c1c6f74b 3038w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=3524&amp;s=ce09a8d4bb14b12c93bf199f9646e652 3524w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=4088&amp;s=5dc076ed34097b8e3fc7c4ea6c10d025 4088w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=4742&amp;s=1c52b1eecfceced01e72a7f66b1f0f0e 4742w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=5500&amp;s=a11515c9857901827a594328092105bc 5500w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=6380&amp;s=6964e183fd1111f4c14ea607a0c4eb79 6380w, https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&amp;w=7400&amp;s=1b7fed1d7da3656fbd95e4cb03176abb 7400w" sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/walmart_guild_joint_logo.svg?ixlib=rails-2.1.4?ixlib=rails-3.0.2&s=02ae995e39a7e9a392c6088e864474d5" /></div></div><div class="section text flex--1"><div class="flex flexDirection--column walmart-light-bg position--relative height--full login-cta"><div class="padding--16 md:padding--top_36 md:padding--x_56"><div class="padding--bottom_20"><img sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/shared/W_Burst_logo.svg?ixlib=rails-3.0.2&s=4663ffb66bf633430ce9465ec079178e" /></div><h2 class="fontWeight--800 walmart-dark-txt">Live Better U - Your Education Made Easy</h2><h5 class="walmart-dark-txt margin--bottom_32">Earn a college degree or certificate for the equivalent of $1 per day, finish your high school diploma, or learn a language for free.</h5><div class="margin--y_40"><a id="topGetStarted" class="button trackable" href="https://students.guildacceptance.com/users/auth/auth0#Walmart_redirect">Get Started</a></div></div></div></div></div></div><div class="section textAlign--center overview scrollSection" id="liveBetterU"><div class="text-container padding--16 padding--y_32 md:padding--x_56"><div class="margin--top_16 margin--bottom_32"><img sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/shared/Live_Better_U_logo.svg?ixlib=rails-3.0.2&s=b39139b86fdf9a86a152b328512d5754" /></div><h2 class="walmart-dark-txt fontWeight--800 margin--bottom_32 fontSize--3xl">$1 per day. For real.</h2><p class="fontSize--xl">There’s no catch! There are no strings attached. Walmart is investing in your personal and professional success. Walmart knows education empowers you to deliver for customers while also growing and advancing your career.</p><a id="programBrandingCTA" class="button trackable view-programs-cta" target="_blank" href="https://walmart.guildacceptance.com/catalog?configure%5BhitsPerPage%5D=9&amp;page=1">View Programs</a></div></div><div class="section walmart-base-bg textAlign--center quote scrollSection" id="studentQuote"><div class="text-container padding--16 md:padding--56"><img sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/shared/Quotation_Mark.svg?ixlib=rails-3.0.2&s=395919dcd9923a102eb65e046ee879b8" /><h2 class="fontWeight--800 text-white fontSize--2xl lg:fontSize--3xl">Dream of something bigger than just the ordinary because the possibilities with education are endless.</h2><p class="margin--top_16 text-white uppercase fontSize--base md:fontSize--lg">Thomas F., High School</p></div></div><div class="section scrollSection margin--top_16 md:margin--top_0" id="educationBenefits"><div class="section split flex"><div class="section text flex--1"><div class="padding--16 md:padding--y_32 md:padding--x_56 border-bottom"><h2 class="fontSize--3xl fontWeight--800 walmart-dark-txt">Live Better U Benefits:</h2><ul class="benefits-new fontSize--xl text-blue-dark"><li class="flex flexItems--center md:padding--bottom_24"><div class="margin--right_0 md:margin--right_32"><div class="bullet"></div></div><p class="fontWeight--800 height--full margin--0">Choice:<span class="fontWeight--300"> College degrees, college prep, certificates, high school diploma, or language learning</span></p></li><div class="divider"></div><li class="flex flexItems--center md:padding--bottom_24"><div class="margin--right_0 md:margin--right_32"><div class="bullet"></div></div><p class="fontWeight--800 height--full margin--0">Flexibility:<span class="fontWeight--300"> Online classes you attend on your schedule</span></p></li><div class="divider"></div><li class="flex flexItems--center md:padding--bottom_24"><div class="margin--right_0 md:margin--right_32"><div class="bullet"></div></div><p class="fontWeight--800 height--full margin--0">Coaching:<span class="fontWeight--300"> Get support from your application to your graduation</span></p></li><div class="divider"></div><li class="flex flexItems--center md:padding--bottom_24"><div class="margin--right_0 md:margin--right_32"><div class="bullet"></div></div><p class="fontWeight--800 height--full margin--0">Books:<span class="fontWeight--300"> Get reimbursed for qualifying books and fees</span></p></li><div class="divider"></div></ul><div class="padding--top_16 padding--bottom_24"><a id="benefitOverviewCTA" class="button trackable walmart-base-bg explore-benefit-cta text-white padding--12 padding--x_24 borderRadius--2" href="https://toolkit.guildacceptance.com">Explore Benefit</a></div></div></div><div class="section image flex--1 overview-benefits-image"></div></div></div><div class="section display--block overview-benefits-image md:display--none"></div><div class="section"><div class="page-section why-college"><div class="page-section-content"><div class="section-title"><h2>Why Further Your Education</h2></div><div class="why-college-grid-wrapper"><div class="college-column one"><div class="tile one stat"><p class="tagline">Greater earning potential</p><p class="number">+ $23.7 K</p><p class="description">The average salary increase for someone with a bachelor’s degree.</p></div><div class="tile two"></div></div><div class="college-column two"><div class="tile three"></div><div class="tile four stat"><p class="tagline">Increase opportunities</p><p class="number">2X</p><p class="description">More likely to avoid unemployment.</p></div></div><div class="college-column three"><div class="tile five stat"><p class="tagline">Maximize your potential</p><p class="number">87%</p><p class="description">Students say classes help them feel more capable.</p></div><div class="tile six stat"><p class="tagline">Be a role model</p><p class="number">85%</p><p class="description">If you earn a degree, there’s a good chance your kids will too.</p></div><div class="tile seven"></div></div></div></div></div><div class="scrollSection" id="whyFurtherEducation"></div></div><div class="section"><div class="split flex flexDirection--column walmart-footer md:flexDirection--row"><div class="text flex--1 flex flexDirection--column flexItems--center walmart-base-bg padding--16 padding--y_40 md:flexDirection--row md:padding--40"><img srcset="https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=100&amp;s=59c2e8f5b1dfcc41f00984101bd5bc03 100w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=116&amp;s=a1410c4fd3278c0846064c668aa3c499 116w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=134&amp;s=8af5949000c209797df73d50f2e47ac7 134w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=156&amp;s=a8a4066378ac86c17df10b0505e0e534 156w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=182&amp;s=c4bef2664f272cc139d8b6b409c8a690 182w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=210&amp;s=8bc8d8977580a83aa054bb8a48f39a90 210w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=244&amp;s=451b27c420478b52afbf5e65b760dcbb 244w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=282&amp;s=c1174fff6209b73f8e50dc8bc73c783d 282w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=328&amp;s=6366675490ef38ecd36575817d557a71 328w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=380&amp;s=f9a568c4b0a44fa8eac6b1b6ee02b8cc 380w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=442&amp;s=09216962b3f65b4c40aee8a3c4df08bc 442w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=512&amp;s=414a081a400a2f83c0682e0e544825ea 512w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=594&amp;s=2ac09ab3eb928c14be965fef1537847a 594w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=688&amp;s=84777b94b111835136a8393356adad81 688w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=798&amp;s=6f07e14069e5940fcaada8a92dae2a75 798w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=926&amp;s=56cd3438949cf447c6b1a698b6fb31c6 926w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=1074&amp;s=996bd22fbae86c4ab905d3a201cb7479 1074w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=1246&amp;s=f717377e7029b4c18e97fb1beb46ee7a 1246w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=1446&amp;s=ff249bd56d29073b76fc05b67b5fd77a 1446w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=1678&amp;s=31bc27edbd88fb9a9281080dfdedf85b 1678w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=1946&amp;s=420bf730fe4912a64a8cd498f9333171 1946w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=2258&amp;s=077619c421848372dbe1e21c8ec2630d 2258w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=2618&amp;s=953b405d0a5135264ce66020c270eeed 2618w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=3038&amp;s=c2d13ef795bac337365996f2c059dbd4 3038w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=3524&amp;s=0d9f4c39266741e255ea6823b6028a96 3524w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=4088&amp;s=50592966c8674bebd733ac915db2c7fe 4088w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=4742&amp;s=15bda2911a4219c293aba5d51b9b3610 4742w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=5500&amp;s=497e915b1e4cc48d023b0af409793743 5500w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=6380&amp;s=5d37947a6f66e6be52fe8a8168442839 6380w, https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&amp;w=7400&amp;s=6bbe99ffc8b6aee3b5ec4dbe014122fe 7400w" sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/shared/Graduate_icon.svg?ixlib=rails-3.0.2&s=d3087e93691b5c370075bd0a68231e92" /><div class="text-white margin--left_0 md:margin--left_44"><h3 class="text-white fontSize--2xl md:fontSize--3xl">There’s no time like the present</h3><p>Whether it has been 30 days or 30 years since the last time you were in a classroom, with Walmart and Guild Education you have everything you need to be successful. Sign up to explore options or to chat with a coach about the right path for you.</p></div></div><div class="text flex--1 walmart-light-bg scrollSection" id="walmartFooter"><div class="flex flexDirection--column walmart-light-bg position--relative height--full login-cta"><div class="padding--16 md:padding--top_36 md:padding--x_56"><div class="padding--bottom_20"><img sizes="100vw" src="https://imgix.guildeducation.com/partner-pages/walmart/shared/W_Burst_logo.svg?ixlib=rails-3.0.2&s=4663ffb66bf633430ce9465ec079178e" /></div><h2 class="fontWeight--800 walmart-dark-txt">Live Better U — Your Way Back To School</h2><h5 class="walmart-dark-txt margin--bottom_32">Learn more about your education options today!</h5><div class="margin--y_40"><a id="bottomGetStarted" class="button trackable" href="https://students.guildacceptance.com/users/auth/auth0#Walmart_redirect">Get Started</a></div></div></div></div></div></div></div><footer><script type="application/ld+json">{  "@context": "http://schema.org",  "@type": "Organization",  "name": "Guild Education",  "legalName": "Guild Education, Inc",  "url": "https://walmart.defaultale.guildacceptance.com/partner",  "logo": "https://imgix.guildeducation.com/Meta/guild-logo-opengraph.png?ixlib=rails-3.0.2&s=93e135b03d29eeab53107bec168a6f92",  "address": [    {      "@type": "PostalAddress",      "streetAddress": "370 17th St., Suite 3600",      "postalCode": "80202",      "addressRegion": "CO",      "addressLocality": "Denver",      "addressCountry": "USA"    }  ],  "contactPoint": [    {      "@type": "ContactPoint",      "email": "info@guildeducation.com",      "telephone": "+1-720-709-2871",      "contactType": "customer service"    }  ],  "sameAs": [    "https://twitter.com/guildeducation",    "https://www.linkedin.com/company/guild-education'",    "https://www.facebook.com/GuildEducation"  ]}</script><div class="footer__wrapper"><div data-react-class="Footer" data-react-props="{&quot;logo&quot;:&quot;https://recess-images.guildeducation.com/guild_logos/g/g_color.svg&quot;,&quot;columns&quot;:[{&quot;title&quot;:&quot;Contact Us&quot;,&quot;links&quot;:[{&quot;href&quot;:&quot;https://guildeducation.zendesk.com/hc/en-us&quot;,&quot;label&quot;:&quot;Help Center&quot;,&quot;id&quot;:&quot;help-center&quot;},{&quot;href&quot;:&quot;https://guildeducation.zendesk.com/hc/en-us/requests/new&quot;,&quot;label&quot;:&quot;Contact a Coach&quot;,&quot;id&quot;:&quot;contact-a-coach&quot;}]},{&quot;title&quot;:&quot;Product&quot;,&quot;links&quot;:[{&quot;href&quot;:&quot;https://students.guildeducation.com/students&quot;,&quot;label&quot;:&quot;Students&quot;},{&quot;href&quot;:&quot;https://students.guildeducation.com/for_companies&quot;,&quot;label&quot;:&quot;Companies&quot;},{&quot;href&quot;:&quot;https://walmart.guildacceptance.com/catalog&quot;,&quot;label&quot;:&quot;Programs&quot;}]},{&quot;title&quot;:&quot;Guild&quot;,&quot;links&quot;:[{&quot;href&quot;:&quot;https://www.guildeducation.com/careers&quot;,&quot;label&quot;:&quot;Careers&quot;},{&quot;href&quot;:&quot;https://students.guildeducation.com/press&quot;,&quot;label&quot;:&quot;Press&quot;},{&quot;href&quot;:&quot;https://students.guildeducation.com/about_us&quot;,&quot;label&quot;:&quot;Our Story&quot;}]}],&quot;socialLinks&quot;:null,&quot;noBackground&quot;:null,&quot;partnerCopyrightName&quot;:null,&quot;customClass&quot;:null}" data-react-cache-id="Footer-0"></div></div></footer><script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script><script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0/dist/fetch.umd.min.js"></script><script src="https://player.vimeo.com/api/player.js"></script><script>var scriptURL = "https://students.guildacceptance.com/ghost"
+loadAnalyticsScript();
+loadScrollDepthTracking();
+
+function loadAnalyticsScript() {
+  new Promise(function(resolve, reject) {
+    var scriptElement = document.createElement('script');
+    scriptElement.type = 'text/javascript';
+    scriptElement.src = scriptURL;
+    document.head.appendChild(scriptElement);
+    scriptElement.onload = function() {
+      resolve();
+    };
+  }).then(function() {
+    document.addEventListener('analyticsLoaded', function() {
+      startAnalytics(setEffectiveReferrer());
+    });
+  }).then(function() {
+    document.addEventListener('analyticsLoaded', function() {
+      loadNavClickTracking();
+      loadPageClickTracking();
+      loadAnalyticsAndVimeo()
+    });
+  });
+};
+function startAnalytics(referrer) {
+  analytics.page({
+    loggedIn: false,
+    referrer: referrer
+  });
+  analytics.track('PageTrack', {
+    loggedIn: false
+  });
+  analytics.ready(function() {
+    ga('set', 'transport', 'beacon');
+  });
+}
+function setEffectiveReferrer() {
+  var state = window['optimizely'] && window['optimizely'].get('state');
+  var referrer = state && state.getRedirectInfo() ? state.getRedirectInfo().referrer : document.referrer;
+  return referrer;
+}
+
+function toCamelCase(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    return index == 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+|-/g,'');
+}
+
+function loadAnalyticsAndVimeo(){
+  if(typeof analytics !== "undefined" && typeof analytics.plugins !== "undefined"){
+    var iframe = document.querySelector('#videoPlayButton');
+    if (iframe) {
+      var player = new Vimeo.Player(iframe);
+      var VimeoAnalytics = analytics.plugins.VimeoAnalytics
+      var vimeoAnalytics = new VimeoAnalytics(player, "292435cf55db28b3f508ace5ade0816a")
+      vimeoAnalytics.initialize() 
+    }
+  }
+  else{
+    setTimeout(loadAnalyticsAndVimeo, 500);
+  }
+}
+function product() {
+  var path = window.location.pathname;
+  if(path.indexOf('manager_toolkit') != -1) {
+    return 'managerToolkit';
+  } else {
+    return 'partnerPages';
+  };
+}
+
+function loadNavClickTracking() {    
+  const selectors = {
+    '[data-testid=_login-button]': 'topNavLogin',
+    '[data-testid=signup-button]': 'topNavSignUp',
+    '[testid=topNavStudents]': 'topNavStudents',
+    '[testid=topNavCompanies]': 'topNavCompanies',
+    '[testid=topNavPrograms]': 'topNavPrograms',
+    '[testid=topNavHome]': 'topNavHome',
+    '[testid=topNavApplications]': 'topNavApplications',
+    '[testid=topNavTuitionToolkit]': 'topNavTuitionToolkit'
+  }
+  for (var selectorName in selectors) {
+    var elems = document.querySelectorAll(selectorName);
+    Array.prototype.forEach.call(elems, function(element) {
+      var currentSelector = selectorName; // because IE 11 does not support function-scoped `let` in loop
+      element && element.addEventListener('click', function(e) {
+        analytics.track('Clickable', {
+          "type": element.className.split(' ')[0].split('--')[0],
+          "text": element.innerText,
+          "tag": selectors[currentSelector],
+          "loggedIn": false,
+          "product": product()
+        })
+        e.stopPropagation();
+      })
+    })
+  }
+}
+
+function loadPageClickTracking() {
+  const classes = [
+      'topGetStarted',
+      'leaderLogin',
+      'newBannerCTA',
+    ]
+  classes.forEach(function(className) {
+    var elems1 = document.getElementsByClassName(className);
+    Array.prototype.forEach.call(elems1, function(element) {
+      element && element.addEventListener('click', function(e) {
+        analytics.track('Clickable', {
+          "type": "button",
+          "tag": toCamelCase(className),
+          "text": element.innerHTML,
+          "loggedIn": false,
+          "product": product()
+        })
+        e.stopPropagation();
+      })
+    })
+  })
+
+  // CATALOG STYLE PROGRAM TILES
+  var elems = document.getElementsByClassName('programTile');
+  Array.prototype.forEach.call(elems, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+        "type": "tile",
+        "tag": toCamelCase(element.id + "Tile"),
+        "text": toCamelCase(element.id),
+        "loggedIn": false,
+        "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+  // OLD RECOMMENDED PROGRAMS LAYOUT
+  // Present on Discover, Canvas, HHUSA, Lyft, Mission43, PSL, SEIU & Taco Bell. Remove when this layout is deprecated
+  var elems2 = document.getElementsByClassName('featuredProgram');
+  Array.prototype.forEach.call(elems2, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+        "type": "link",
+        "tag": toCamelCase(element.id),
+        "text": element.innerHTML,
+        "loggedIn": false,
+        "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+
+  // The trackable class is present on all new (Jan 2020) template CTAs.
+  // Separating so it will be easy to deprecate older tracking events
+  var trackables = document.getElementsByClassName('trackable');
+  Array.prototype.forEach.call(trackables, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+       "type": element.className.split(' ')[0],
+       "tag": element.id,
+       "text": element.innerHTML.split('<')[0],
+       "loggedIn": false, 
+       "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+  // FOOTER
+  // Can't assign ids to footer items, so have to use the recess classes
+  var elems3 = document.getElementsByClassName('nav-item--2pik_');
+  Array.prototype.forEach.call(elems3, function(element) {
+    element && element.addEventListener('click', function(e) {
+      analytics.track('Clickable', {
+        "type": "link",
+        "tag": toCamelCase("footer" + element.innerHTML),
+        "text": element.innerHTML,
+        "loggedIn": false,
+        "product": product()
+      })
+      e.stopPropagation();
+    })
+  })
+}
+
+ // SCROLL DEPTH
+function loadScrollDepthTracking() {
+  let pageSection;
+  let totalSections;
+  window.addEventListener("load", (event) => {
+    createObservers();
+  }, false);
+  function createObservers() {
+    pageSections = document.querySelectorAll(".scrollSection");
+    totalSections = pageSections.length + 1 // Adds 1 for hero section
+    let observer;
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.8]
+    };
+    pageSections.forEach((section) => {
+      let arr = Array.prototype.slice.call(pageSections); // Converts to array to find section's index
+      index = arr.indexOf(section) + 2; // Adds 1 to not start counting at 0, and 1 to accommodate for hero section
+      section.setAttribute('data-section', `${index}-of-${totalSections}`)
+      observer = new IntersectionObserver(handleIntersect, options);
+      observer.observe(section);
+    })
+  }
+  function handleIntersect(entries, observer) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        analytics && analytics.track('Scroll', {
+          "location": entry.target.getAttribute('data-section'),
+          "tag": entry.target.id,
+          "screenWidth": window.innerWidth,
+          "loggedIn": true,
+          "product": product()
+        })
+        observer.unobserve(entry.target);
+      }
+    });
+  }
+}</script><script>document.addEventListener('analyticsLoaded', function() {
+  loadOptimizelyExperimentAnalytics();
+});
+
+function loadOptimizelyExperimentAnalytics() {
+  var loc = window.location
+  analytics.track('Experiment Viewed', {
+    experimentId: "17580820696", 
+    experimentName: "walmart-optimizely-new-template",
+    nonInteraction: 1,
+    optimizelyUserId: "9996f5d4145926b8d8276f0b45",
+    variationId: "17595840600",
+    variationName: "variation_1"
+  });
+  loadOptimizelyClickTracking();
+  function loadOptimizelyClickTracking() {
+    var walmartSignUpElements = [
+      document.querySelector('[data-testid=signup-button]'),
+      document.querySelector('#stickyNavCTA'),
+      document.querySelector('#heroSignUp'),
+      document.querySelector('#howToStartCTA'),
+      document.querySelector('#coachingOverviewCTA'),
+      document.querySelector('#get-started-link'),
+      document.querySelector('#paymentsCard'),
+      document.querySelector('#coverageCard'),
+      document.querySelector('#eligibilityCard'),
+    ]
+
+    walmartSignUpElements.map(function(element) {
+      element && element.addEventListener('click', function() {
+        optimizelyClientInstance.track('clickStartCTA', "9996f5d4145926b8d8276f0b45");
+      });
+    });
+  };
+};</script><script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=17fa3723-ed72-4e15-8f0f-3539ee3e92b9"></script><script>// Grab a particular cookie & format it
+function getCookie(name) {
+  function escape(s) { return s.replace(/([.*+?\^${}()|\[\]\/\\])/g, '\\$1'); };
+  var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+  var result = match ? match[1] : null;
+  var cookie = !!result && result[0] == "%" ? result.substring(3, result.length-3) : null
+  return cookie
+};
+// Set the ajs_anonymous_id cookie in Zendesk tags
+const uuid = ""
+const uuidTag = "user_id-"+uuid
+const anonId = getCookie('ajs_anonymous_id')
+const anonIdTag = "anon_id-"+anonId
+const tags = []
+if (!!uuid) { tags.push(uuidTag) }
+if (!!anonId) { tags.push(anonIdTag) }
+window.zESettings = {
+  webWidget: {
+    chat: {
+      tags: tags
+    }
+  }
+};
+// Load Zendesk widget
+zE('webWidget:on', 'chat:departmentStatus', function(dept) {
+  if (dept.name == 'General Chat Support' && dept.status == 'online') {
+    zE('webWidget', 'updateSettings', {
+      webWidget: {
+        chat: {
+          departments: {
+            enabled: [''],
+            select: 'General Chat Support'
+          },
+          suppress: false
+        }
+      }
+    });
+  } else if (dept.name == 'General Chat Support' && dept.status !== 'online') {
+    zE('webWidget', 'updateSettings', {
+      webWidget: {
+        chat: {
+          suppress: true
+        }
+      }
+    });
+  }
+});
+// Log analytics event when chat window is opened
+zE('webWidget:on', 'open', function() {
+  var path = window.location.pathname;
+  var product;
+  if(path.indexOf('manager_toolkit') != -1) {
+    product = 'managerToolkit';
+  } else {
+    product = 'partnerPages';
+  };
+  window.analytics && window.analytics.track("Clickable", 
+    {
+      "type": "Button", 
+      "text": "Chat/Help", 
+      "tag":"floating_chat", 
+      "loggedIn": false,
+      "product": product
+    }
+  );
+});</script><script src="https:/packs/js/application-4a6ab4066fe7ffb5814c.js"></script></body></html>

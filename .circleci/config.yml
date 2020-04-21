@@ -9,4 +9,4 @@ jobs:
           name: Run tests
           command: |
             echo 'In the command...'
-            bash pp-default-values-alerting.sh 
+            ./pp-default-values-alerting.sh 

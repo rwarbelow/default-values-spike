@@ -3,14 +3,21 @@ jobs:
   build:
     docker:
       - image: ubuntu
+      - image: circleci/ruby:2.4.2-jessie-node
     working_directory: ~/default-values-spike
     steps:
       - checkout
       - run:
+          name: Which bundler?
+          command: |
+          echo 'Checking bundler version'
+          bundle -v
+      - run:
+          name: Bundle Install
+          command: |
+          echo 'Bundling'
+          bundle check --path vendor/bundle || bundle install --deployment
+      - run:
           name: Run tests
           command: |
-            apt-get update && apt-get install -y
-            apt install curl -y
-            echo 'In the command...'
-            ls -a
-            ./pp-default-values-alerting.sh
+            echo 'Running Ruby script'

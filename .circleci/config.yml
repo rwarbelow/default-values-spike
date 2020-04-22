@@ -10,13 +10,13 @@ jobs:
       - run:
           name: Which bundler?
           command: |
-          echo 'Checking bundler version'
-          bundle -v
+            echo 'Checking bundler version'
+            bundle -v
       - run:
           name: Bundle Install
           command: |
-          echo 'Bundling'
-          bundle check --path vendor/bundle || bundle install --deployment
+            echo 'Bundling'
+            bundle check --path vendor/bundle || bundle install --deployment
       - run:
           name: Run tests
           command: |

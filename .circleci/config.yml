@@ -15,7 +15,7 @@ jobs:
           name: Bundle Install
           command: |
             echo 'Bundling'
-            bundle check --path vendor/bundle || bundle install --deployment
+            bundle install
       - run:
           name: Run tests
           command: |

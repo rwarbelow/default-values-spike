@@ -9,8 +9,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            apt-get update && \
-              apt-get -y install sudo
+            apt-get -y install sudo
             sudo apt install curl
             echo 'In the command...'
             ls -a

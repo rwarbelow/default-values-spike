@@ -10,7 +10,10 @@ employers.each do |employer|
   doc = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
   doc.traverse do |node|
     if node.text? && node.to_html(encoding:'US-ASCII').include?('&#8204;')
+      puts "Found default content for #{employer}: #{node.text}"
       pages_with_default_content[employer] << node.text
     end
   end
 end
+
+p pages_with_default_content

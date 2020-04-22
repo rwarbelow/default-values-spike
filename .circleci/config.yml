@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: alpine
+    working_directory: ~/default-values-spike
     steps:
       - checkout
       - run:

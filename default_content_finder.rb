@@ -10,7 +10,7 @@ employers.each do |employer|
   doc = Nokogiri::HTML(URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
   doc.traverse do |node|
     if node.text? && node.to_html(encoding:'US-ASCII').include?('&#8204;')
-      pages_with_default_content[employer] << node.to_html(encoding:'US-ASCII').slice('&#8204;')
+      pages_with_default_content[employer] << node.to_html(encoding:'US-ASCII').gsub('&#8204;', '')
     end
   end
 end

@@ -20,3 +20,4 @@ jobs:
           name: Run tests
           command: |
             echo 'Running Ruby script'
+            ruby default_content_finder.rb

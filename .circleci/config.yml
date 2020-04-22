@@ -9,6 +9,7 @@ jobs:
       - run:
           name: Run tests
           command: |
+            sudo apt install curl
             echo 'In the command...'
             ls -a
             ./pp-default-values-alerting.sh

@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            RUN apt-get update && apt-get install -y
+            apt-get update && apt-get install -y
             apt install curl -y
             echo 'In the command...'
             ls -a

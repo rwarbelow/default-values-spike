@@ -8,20 +8,16 @@ token="&zwnj;"
 echo 'Setting employers'
 employers=('walmart' 'fiveguys' 'wm')
 
-echo 'Here is the token'
-echo token
-
-echo 'Here are the employers'
-echo employers
-
-# for employer in "${employers[@]}"; do 
-#     url="https://${employer}.defaultale.guildacceptance.com/partner?auth_redirect=true"
-#     if curl -k -l ${url} | cat | grep -q "$token"; then
-#         echo "Default content found for ${employer}"
-#     else
-#         echo "Default content not found"
-#     fi
-# done
+echo 'Starting loop'
+for employer in "${employers[@]}"; do 
+  echo "Checking ${employer}..."
+  url="https://${employer}.defaultale.guildacceptance.com/partner?auth_redirect=true"
+  if curl -k -l ${url} | cat | grep -q "$token"; then
+      echo "Default content found for ${employer}"
+  else
+      echo "Default content not found"
+  fi
+done
 
 
 

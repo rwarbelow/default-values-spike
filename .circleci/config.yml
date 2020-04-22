@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  slack: circleci/slack@3.4.2
 jobs:
   build:
     docker:
@@ -21,3 +23,5 @@ jobs:
           command: |
             echo 'Running Ruby script'
             ruby default_content_finder.rb
+      - slack/status:
+          fail_only: true # Optional: if set to `true` then only failure messages will occur.

@@ -11,4 +11,4 @@ jobs:
           command: |
             echo 'In the command...'
             ls -a
-            ./pp-default-values-alerting
+            ./pp-default-values-alerting.sh

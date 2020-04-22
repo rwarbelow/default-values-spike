@@ -8,10 +8,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Which bundler?
+          name: Install bundler
           command: |
-            echo 'Checking bundler version'
-            bundle -v
+            echo 'Installing bundler...'
+            gem install bundler
       - run:
           name: Bundle Install
           command: |

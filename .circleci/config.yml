@@ -10,4 +10,5 @@ jobs:
           name: Run tests
           command: |
             echo 'In the command...'
+            ls -a
             ./pp-default-values-alerting.sh 

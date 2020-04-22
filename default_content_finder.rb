@@ -10,10 +10,16 @@ employers.each do |employer|
   doc = Nokogiri::HTML(URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
   doc.traverse do |node|
     if node.text? && node.to_html(encoding:'US-ASCII').include?('&#8204;')
-      puts "Found default content for #{employer}: #{node.text}"
-      pages_with_default_content[employer] << node.text
+      pages_with_default_content[employer] << node.to_html(encoding:'US-ASCII').slice('&#8204;')
     end
   end
 end
 
-p pages_with_default_content
+error_results_message = pages_with_default_content.map do |employer, content|
+  "\t-- On #{employer} subdomain, found '#{content.map(&:strip).join(", ")}'"
+end.join("\n")
+
+if pages_with_default_content.count > 0
+  puts "Warning: Default content found!\n#{error_results_message}"
+  exit 1
+end

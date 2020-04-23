@@ -20,8 +20,10 @@ jobs:
             bundle install
       - run:
           name: Run tests
+          environment:
+            RESULT: $(eval ruby default_content_finder.rb | cut -c1-7)
           command: |
             echo 'Running Ruby script'
-            ruby default_content_finder.rb
+            echo "${RESULT}"
       - slack/status:
-          fail_only: true # Optional: if set to `true` then only failure messages will occur.
+          fail_only: true 

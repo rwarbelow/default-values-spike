@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'openssl'
+require 'active_support/inflector'
 
 employers = ['wm', 'acme', 'fiveguys', 'tacobell']
 pages_with_default_content = Hash.new {|hash, key| hash[key] = [] }
@@ -20,5 +21,5 @@ error_results_message = pages_with_default_content.map do |employer, content|
 end.join("\n\n")
 
 if pages_with_default_content.count > 0
-  puts "Warning: Default content found!\n#{error_results_message}"
+  puts "Warning: Default content found for #{pages_with_default_content.count} partner(s).\n#{error_results_message}"
 end

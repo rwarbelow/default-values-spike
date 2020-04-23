@@ -24,6 +24,8 @@ jobs:
             echo 'Running Ruby script'
             RESULT=$(ruby default_content_finder.rb)
             echo $RESULT
+          environment:
+            RESULT: $RESULT
       - slack/status:
           fail_only: true 
           failure_message: echo $RESULT

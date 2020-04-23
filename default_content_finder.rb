@@ -16,7 +16,7 @@ employers.each do |employer|
 end
 
 error_results_message = pages_with_default_content.map do |employer, content|
-  "\t* *#{employer.upcase}* is using the following default content: _'#{content.map(&:strip).join(", ")}'_"
+  "\t-- *#{employer.upcase}* is using the following default content: _'#{content.map(&:strip).map.with_index {|content, i| (i+1).to_s + ". " + content}.join(", ")}'_"
 end.join("\n")
 
 if pages_with_default_content.count > 0

@@ -29,7 +29,6 @@ jobs:
       - slack/status:
           fail_only: false 
           failure_message: $RESULT
-          success_message: $RESULT
 workflows:
   version: 2
   commit-workflow:

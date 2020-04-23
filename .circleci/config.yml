@@ -23,17 +23,13 @@ jobs:
           command: |
             echo 'Running Ruby script'
             RESULT=$(ruby default_content_finder.rb)
-            echo 'export VERY_IMPORTANT=$(ruby default_content_finder.rb)' >> $BASH_ENV
+            echo 'export RESULT=$(ruby default_content_finder.rb)' >> $BASH_ENV
             source $BASH_ENV
-            echo 'Here is the bash env'
-            echo $BASH_ENV
-            echo '------'
-            echo 'Here is the result'
-            echo $VERY_IMPORTANT
+            ruby evaluate_result.rb
       - slack/status:
           fail_only: false 
-          failure_message: $VERY_IMPORTANT
-          success_message: $VERY_IMPORTANT
+          failure_message: $RESULT
+          success_message: $RESULT
 workflows:
   version: 2
   commit-workflow:

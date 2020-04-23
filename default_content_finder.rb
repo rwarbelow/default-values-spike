@@ -16,9 +16,9 @@ employers.each do |employer|
 end
 
 error_results_message = pages_with_default_content.map do |employer, content|
-  ":alert: *#{employer.upcase}'s* partner page is displaying the following pieces of default content: #{content.map(&:strip).map.with_index {|content, i| "\n\t_" + (i+1).to_s + ". " + content + "_"}.join}"
+  "*#{employer.upcase}'s* partner page is displaying the following pieces of default content: #{content.map(&:strip).map.with_index {|content, i| "\n\t_" + (i+1).to_s + ". " + content + "_"}.join}"
 end.join("\n\n")
 
 if pages_with_default_content.count > 0
-  puts "Warning: Default content found for #{pages_with_default_content.count} partner(s).\n#{error_results_message}"
+  puts ":alert: *Warning:* Default content found for #{pages_with_default_content.count} partner(s).\n#{error_results_message}"
 end

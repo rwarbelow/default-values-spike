@@ -29,6 +29,7 @@ jobs:
             echo '------'
             echo 'Here is teh result'
             echo "${RESULT}"
+            source $BASH_ENV
       - slack/status:
           fail_only: true 
           failure_message: "${RESULT}"

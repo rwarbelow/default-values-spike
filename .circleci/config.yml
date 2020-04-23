@@ -28,11 +28,11 @@ jobs:
             echo $BASH_ENV
             echo '------'
             echo 'Here is teh result'
-            echo $RESULT
+            echo $SHARED_RESULT
             source $BASH_ENV
       - slack/status:
-          fail_only: true 
-          failure_message: $RESULT
+          fail_only: false 
+          failure_message: $SHARED_RESULT
 workflows:
   version: 2
   commit-workflow:

@@ -27,4 +27,4 @@ jobs:
             echo 'export SHARED_RESULT="${RESULT}"' >> $BASH_ENV
       - slack/status:
           fail_only: true 
-          failure_message: ${SHARED_RESULT}
+          failure_message: '${SHARED_RESULT}'

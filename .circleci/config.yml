@@ -25,10 +25,10 @@ jobs:
             RESULT=$(ruby default_content_finder.rb)
             echo 'export SHARED_RESULT="$(ruby default_content_finder.rb)"' >> $BASH_ENV
             echo 'Here is the bash env'
-            echo $BASH_ENV
+            echo "${BASH_ENV}"
             echo '------'
             echo 'Here is teh result'
-            echo $RESULT
+            echo "${RESULT}"
       - slack/status:
           fail_only: true 
-          failure_message: 'https://circleci.com/workflow-run/${RESULT}'
+          failure_message: "${RESULT}"

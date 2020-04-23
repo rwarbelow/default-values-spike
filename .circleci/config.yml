@@ -29,7 +29,7 @@ jobs:
       - slack/status:
           fail_only: false 
           failure_message: $RESULT
-          success_message: 'All partners are good to go! :tada:'
+          success_message: ':tada: All partners are good to go!'
 workflows:
   version: 2
   commit-workflow:

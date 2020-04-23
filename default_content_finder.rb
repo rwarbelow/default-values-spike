@@ -20,5 +20,5 @@ error_results_message = pages_with_default_content.map do |employer, content|
 end.join("\n")
 
 if pages_with_default_content.count > 0
-  abort "Warning: Default content found!\n#{error_results_message}"
+  "Warning: Default content found!\n#{error_results_message}"
 end

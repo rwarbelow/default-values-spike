@@ -16,7 +16,7 @@ employers.each do |employer|
 end
 
 error_results_message = pages_with_default_content.map do |employer, content|
-  "\t-- On #{employer} subdomain, found '#{content.map(&:strip).join(", ")}'"
+  "\t-- On **#{employer}** subdomain, found _'#{content.map(&:strip).join(", ")}'_"
 end.join("\n")
 
 if pages_with_default_content.count > 0

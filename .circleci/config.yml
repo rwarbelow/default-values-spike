@@ -28,4 +28,4 @@ jobs:
             echo $BASH_ENV
       - slack/status:
           fail_only: true 
-          failure_message: 'Does this even work'
+          failure_message: 'https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}'

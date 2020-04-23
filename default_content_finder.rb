@@ -16,8 +16,8 @@ employers.each do |employer|
 end
 
 error_results_message = pages_with_default_content.map do |employer, content|
-  "-- :alert: *#{employer.upcase}* is using the following default content: #{content.map(&:strip).map.with_index {|content, i| "\n\t_" + (i+1).to_s + ". " + content + "_"}.join}"
-end.join("\n")
+  ":alert: *#{employer.upcase}* is using the following default content: #{content.map(&:strip).map.with_index {|content, i| "\n\t_" + (i+1).to_s + ". " + content + "_"}.join}"
+end.join("\n\n")
 
 if pages_with_default_content.count > 0
   puts "Warning: Default content found!\n#{error_results_message}"

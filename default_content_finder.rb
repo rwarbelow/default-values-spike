@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'openssl'
 
-employers = ['wm', 'chipotle', 'fiveguys', 'tacobell']
+employers = ['wm', 'acme', 'fiveguys', 'tacobell']
 pages_with_default_content = Hash.new {|hash, key| hash[key] = [] }
 
 employers.each do |employer|

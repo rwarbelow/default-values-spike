@@ -23,16 +23,17 @@ jobs:
           command: |
             echo 'Running Ruby script'
             RESULT=$(ruby default_content_finder.rb)
-            echo 'export SHARED_RESULT="$(ruby default_content_finder.rb)"' >> $BASH_ENV
+            echo 'export SHARED_RESULT="$RESULT"' >> $BASH_ENV
             echo 'Here is the bash env'
             echo $BASH_ENV
             echo '------'
-            echo 'Here is teh result'
+            echo 'Here is the result'
             echo $SHARED_RESULT
             source $BASH_ENV
       - slack/status:
           fail_only: false 
           failure_message: $SHARED_RESULT
+          success_message: $SHARED_RESULT
 workflows:
   version: 2
   commit-workflow:

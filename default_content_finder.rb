@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
 require 'openssl'
-require 'active_support/inflector'
 
 employers = ['wm', 'acme', 'fiveguys', 'tacobell']
 pages_with_default_content = Hash.new {|hash, key| hash[key] = [] }

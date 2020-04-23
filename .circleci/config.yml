@@ -24,7 +24,8 @@ jobs:
             echo 'Running Ruby script'
             RESULT=$(ruby default_content_finder.rb)
             echo $RESULT
-            echo 'export SHARED_RESULT="${RESULT}"' >> $BASH_ENV
+            echo 'export SHARED_RESULT="$(ruby default_content_finder.rb)"' >> $BASH_ENV
+            echo $BASH_ENV
       - slack/status:
           fail_only: true 
           failure_message: '${SHARED_RESULT}'

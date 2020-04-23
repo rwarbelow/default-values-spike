@@ -23,9 +23,12 @@ jobs:
           command: |
             echo 'Running Ruby script'
             RESULT=$(ruby default_content_finder.rb)
-            echo $RESULT
             echo 'export SHARED_RESULT="$(ruby default_content_finder.rb)"' >> $BASH_ENV
+            echo 'Here is the bash env'
             echo $BASH_ENV
+            echo '------'
+            echo 'Here is teh result'
+            echo $RESULT
       - slack/status:
           fail_only: true 
-          failure_message: 'https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}'
+          failure_message: 'https://circleci.com/workflow-run/${RESULT}'

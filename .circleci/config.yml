@@ -20,10 +20,9 @@ jobs:
             bundle install
       - run:
           name: Run tests
-          environment:
-            RESULT: ruby default_content_finder.rb
           command: |
             echo 'Running Ruby script'
-            echo "${RESULT}"
+            RESULT=$(ruby default_content_finder.rb)
+            echo $RESULT
       - slack/status:
           fail_only: true 

@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Run tests
           environment:
-            RESULT: $(eval ruby default_content_finder.rb | cut -c1-7)
+            RESULT: eval "ruby default_content_finder.rb"
           command: |
             echo 'Running Ruby script'
             echo "${RESULT}"

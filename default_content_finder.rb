@@ -7,7 +7,7 @@ pages_with_default_content = Hash.new {|hash, key| hash[key] = [] }
 
 employers.each do |employer|
   url = "https://#{employer}.guildacceptance.com/partner?auth_redirect=true"
-  doc = Nokogiri::HTML(URI.open(url))
+  doc = Nokogiri::HTML(URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, allow_redirections: :all))
   doc.traverse do |node|
     if node.text? && node.to_html(encoding:'US-ASCII').include?('&#8204;')
       pages_with_default_content[employer] << node.to_html(encoding:'US-ASCII').gsub('&#8204;', '')

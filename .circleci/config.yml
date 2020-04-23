@@ -28,8 +28,8 @@ jobs:
             echo $BASH_ENV
             echo '------'
             echo 'Here is the result'
-            echo $SHARED_RESULT
             source $BASH_ENV
+            echo $SHARED_RESULT
       - slack/status:
           fail_only: false 
           failure_message: $SHARED_RESULT

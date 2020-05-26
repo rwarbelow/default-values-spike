@@ -1,46 +1,46 @@
-version: 2.1
-orbs:
-  slack: circleci/slack@3.4.2
-jobs:
-  build:
-    docker:
-      - image: ruby
-    working_directory: ~/default-values-spike
-    steps:
-      - checkout
-      - run:
-          name: Install bundler
-          command: |
-            echo 'Installing bundler...'
-            gem install bundler
-      - run:
-          name: Bundle Install
-          command: |
-            echo 'Bundling'
-            bundle install
-      - run:
-          name: Run tests
-          command: |
-            echo 'Running Ruby script'
-            RESULT=$(ruby default_content_finder.rb)
-            echo 'export RESULT=$(ruby default_content_finder.rb)' >> $BASH_ENV
-            source $BASH_ENV
-            ruby evaluate_result.rb
-      - slack/status:
-          fail_only: false 
-          failure_message: $RESULT
-          success_message: ':tada: All partners are good to go!'
-workflows:
-  version: 2
-  commit-workflow:
-    jobs:
-      - build 
-  scheduled-workflow:
-    triggers:
-      - schedule:
-          cron: "0 * * * *"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - build
+# version: 2.1
+# orbs:
+#   slack: circleci/slack@3.4.2
+# jobs:
+#   build:
+#     docker:
+#       - image: ruby
+#     working_directory: ~/default-values-spike
+#     steps:
+#       - checkout
+#       - run:
+#           name: Install bundler
+#           command: |
+#             echo 'Installing bundler...'
+#             gem install bundler
+#       - run:
+#           name: Bundle Install
+#           command: |
+#             echo 'Bundling'
+#             bundle install
+#       - run:
+#           name: Run tests
+#           command: |
+#             echo 'Running Ruby script'
+#             RESULT=$(ruby default_content_finder.rb)
+#             echo 'export RESULT=$(ruby default_content_finder.rb)' >> $BASH_ENV
+#             source $BASH_ENV
+#             ruby evaluate_result.rb
+#       - slack/status:
+#           fail_only: false 
+#           failure_message: $RESULT
+#           success_message: ':tada: All partners are good to go!'
+# workflows:
+#   version: 2
+#   commit-workflow:
+#     jobs:
+#       - build 
+#   scheduled-workflow:
+#     triggers:
+#       - schedule:
+#           cron: "0 * * * *"
+#           filters:
+#             branches:
+#               only: master
+#     jobs:
+#       - build
